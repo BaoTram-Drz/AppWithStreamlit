@@ -1,6 +1,6 @@
 import streamlit as st
 
-def custom_title(text, font="Autour One", size=36, color="blue", background_color="lightgrey", padding="10px", margin="10px"):
+def custom_title(text, font="Arial", size=36, color="blue", background_color="lightgrey", padding="10px", margin="10px"):
     style = f"font-family:{font}; font-size:{size}px; color:{color}; background-color:{background_color}; padding:{padding}; margin:{margin};"
     st.markdown(f"<p style='{style}'><b>{text}</b></p>", unsafe_allow_html=True)
 
