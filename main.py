@@ -1,35 +1,36 @@
 import streamlit as st
 
-class EnglishLearningApp:
-    def __init__(self):
-        self.pages = [
-            {"title": "Greetings", "content": "Learn common greetings in English."},
-            {"title": "Colors", "content": "Study the names of different colors."},
-            {"title": "Numbers", "content": "Practice counting in English."},
-        ]
-        self.current_page_index = 0
+def show_about():
+    st.title("About")
+    st.write("This is the about page.")
+    st.write("Some text about the application.")
 
-    def display_current_page(self):
-        page = self.pages[self.current_page_index]
-        st.markdown(f"# {page['title']}")
-        st.write(page['content'])
+def show_contact():
+    st.title("Contact")
+    st.write("This is the contact page.")
+    st.text_input("Name", key="contact_name", help="Enter your name")
+    st.text_input("Email", key="contact_email", help="Enter your email")
+    st.text_area("Message", key="contact_message", help="Enter your message")
+
+def show_my_information():
+    st.title("My Information")
+    st.write("This is the my information page.")
+    st.write("Name: John Doe")
+    st.write("Age: 30")
+    st.write("Email: john.doe@example.com")
 
 def main():
-    st.title("English Learning App")
-    app = EnglishLearningApp()
+    st.title("Navigation App")
 
-    # Hiển thị nội dung của trang hiện tại
-    app.display_current_page()
+    # Add buttons to navigate to different pages
+    selected_page = st.sidebar.radio("Select Page", ["About", "Contact", "My Information"])
 
-    # Tạo thanh điều hướng để chuyển đến trang trước và trang sau
-    col1, col2, col3 = st.beta_columns(3)
-    if col2.button("Previous Page") and app.current_page_index > 0:
-        app.current_page_index -= 1
-    if col2.button("Next Page") and app.current_page_index < len(app.pages) - 1:
-        app.current_page_index += 1
-
-    # Hiển thị nội dung của trang được chọn (nếu có sự thay đổi)
-    app.display_current_page()
+    if selected_page == "About":
+        show_about()
+    elif selected_page == "Contact":
+        show_contact()
+    elif selected_page == "My Information":
+        show_my_information()
 
 if __name__ == "__main__":
     main()
